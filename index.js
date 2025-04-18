@@ -23,7 +23,7 @@ app.post("/upload" ,upload.single("resume"), async (req,resp)=>{
     if(!req.file) return resp.status(400).send("No file found");
     try{
         const data = await pdfParse(req.file.buffer);
-        console.log(data);
+        console.log("PDF parsed");
         // return resp.send("Resume extracted");
         const cleanedData = cleanData(data.text);
         console.log("THE CLEANED DATA IS \n" , cleanedData);
