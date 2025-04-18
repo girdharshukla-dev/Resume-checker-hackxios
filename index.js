@@ -5,7 +5,7 @@ const path = require("path");
 const multer = require("multer");
 const {cleanData} = require("./clean");
 const pdfParse = require("pdf-parse");
-const {} = require("./checkResume");
+const {checkResume} = require("./checkResume");
 
 const upload = multer({ storage : multer.memoryStorage()});
 
@@ -27,8 +27,9 @@ app.post("/upload" ,upload.single("resume"), async (req,resp)=>{
         // return resp.send("Resume extracted");
         const cleanedData = cleanData(data.text);
         console.log("THE CLEANED DATA IS \n" , cleanedData);
-        consolelog("NOW GETTING SUGGESTIONS .....");
-        const suggestions = 
+        console.log("NOW GETTING SUGGESTIONS .....");
+        const suggestions = await checkResume(cleanedData);
+        console.log(suggestions);
         return resp.send("Done cleaning");
     }catch(err){
         console.log("Failed to parse resume ...." , err);
