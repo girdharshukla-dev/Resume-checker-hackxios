@@ -2,22 +2,100 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>File upload</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Resume Checker</title>
+  <style>
+    body {
+      background-color: #f7fafc;
+      font-family: 'Arial', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      background-color: white;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      border-radius: 16px;
+      padding: 40px;
+      width: 100%;
+      max-width: 400px;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 24px;
+      font-weight: bold;
+      color: #2d3748;
+      margin-bottom: 20px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    
+
+    button {
+      background-color: #3182ce;
+      color: white;
+      padding: 12px;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      transition: background-color 0.2s ease-in-out;
+    }
+
+    button:hover {
+      background-color: #2b6cb0;
+    }
+
+    .suggestions {
+      margin-top: 30px;
+      background-color: #f0fff4;
+      border: 1px solid #68d391;
+      padding: 16px;
+      border-radius: 8px;
+      color: #38a169;
+      text-align: left;
+    }
+
+    .suggestions h2 {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .suggestions p {
+      font-size: 14px;
+      color: #2f855a;
+    }
+  </style>
 </head>
 
 <body>
-    <h1>Hello</h1>
+  <div class="container">
+    <h1>Upload Your Resume</h1>
 
     <form action="/upload" method="post" enctype="multipart/form-data">
-        <input type="file" name="resume" />
-        <button type="submit">Upload</button>
+      <input type="file" name="resume" />
+      <button type="submit">Upload</button>
     </form>
 
     <% if (typeof suggestions !== 'undefined') { %>
-        <h2>Suggestions</h2>
-        <p><%= suggestions %></p>
-      <% } %>
+    <div class="suggestions">
+      <h2>Suggestions</h2>
+      <p><%= suggestions %></p>
+    </div>
+    <% } %>
+  </div>
 </body>
+
 </html>
