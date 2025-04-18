@@ -16,7 +16,7 @@ app.set("views" , path.resolve("./views"));
 app.use(express.urlencoded({extended : false}));
 
 app.get("/" , (req,resp)=>{
-    return resp.render("index");
+    return resp.render("index" , {suggestions : null});
 })
 
 app.post("/upload" ,upload.single("resume"), async (req,resp)=>{
@@ -30,7 +30,8 @@ app.post("/upload" ,upload.single("resume"), async (req,resp)=>{
         console.log("NOW GETTING SUGGESTIONS .....");
         const suggestions = await checkResume(cleanedData);
         console.log(suggestions);
-        return resp.send("Done cleaning");
+        console.log("Done cleaning and providing suggestions ......");
+        resp.render("index" , {suggestions});
     }catch(err){
         console.log("Failed to parse resume ...." , err);
         return resp.status(500).send(err);

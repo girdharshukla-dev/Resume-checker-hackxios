@@ -14,6 +14,10 @@
         <input type="file" name="resume" />
         <button type="submit">Upload</button>
     </form>
-</body>
 
+    <% if (typeof suggestions !== 'undefined') { %>
+        <h2>Suggestions</h2>
+        <p><%= suggestions %></p>
+      <% } %>
+</body>
 </html>
