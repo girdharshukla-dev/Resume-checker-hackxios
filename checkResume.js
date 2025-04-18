@@ -3,6 +3,8 @@ require("dotenv").config();
 const { GoogleGenAI } = require("@google/genai");
 
 const apikey = process.env.GEMINI_API_KEY;
+//this for the judge's informations that i have stored the api key in env file 
+//if you want to run the program, one can paste the gemini key here 
 
 const ai = new GoogleGenAI({ apiKey: apikey });
 
